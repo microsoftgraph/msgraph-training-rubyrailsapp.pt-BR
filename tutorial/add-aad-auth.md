@@ -243,7 +243,7 @@ def set_user
 end
 ```
 
-Este método define as variáveis que o layout (em `application.html.erb`) usa para mostrar as informações do usuário na barra de navegação. Adicionando-o aqui, não é necessário adicionar esse código em cada ação de controlador único. No enTanto, isso também será executado para ações `AuthController`no, o que não é ideal. Adicione o seguinte código à `AuthController` classe no `./app/controllers/auth_controller.rb` para ignorar a ação anterior.
+Este método define as variáveis que o layout (em `application.html.erb`) usa para mostrar as informações do usuário na barra de navegação. Adicionando-o aqui, não é necessário adicionar esse código em cada ação de controlador único. No entanto, isso também será executado para ações `AuthController`no, o que não é ideal. Adicione o seguinte código à `AuthController` classe no `./app/controllers/auth_controller.rb` para ignorar a ação anterior.
 
 ```ruby
 skip_before_action :set_user
@@ -286,7 +286,7 @@ Agora atualize o modo de exibição para `signout` usar a ação. Abrir `./app/v
 <%= link_to "Sign Out", {:controller => :auth, :action => :signout}, :class => "dropdown-item" %>
 ```
 
-ReInicie o servidor e vá pelo processo de entrada. Você deve terminar de volta na Home Page, mas a interface do usuário deve ser alterada para indicar que você está conectado.
+Reinicie o servidor e vá pelo processo de entrada. Você deve terminar de volta na Home Page, mas a interface do usuário deve ser alterada para indicar que você está conectado.
 
 ![Uma captura de tela da Home Page após entrar](./images/add-aad-auth-01.png)
 
@@ -298,7 +298,7 @@ Clique no avatar do usuário no canto superior direito para acessar o **** link 
 
 Se você observar atentamente o hash gerado pelo OmniAuth, observará que há dois tokens no hash: `token` e. `refresh_token` O valor em `token` é o token de acesso, que é enviado no `Authorization` cabeçalho das chamadas de API. Este é o token que permite que o aplicativo acesse o Microsoft Graph em nome do usuário.
 
-No enTanto, esse token é de vida curta. O token expira uma hora após sua emissão. É onde o `refresh_token` valor se torna útil. O token de atualização permite que o aplicativo solicite um novo token de acesso sem exigir que o usuário entre novamente. Atualize o código de gerenciamento de token para implementar a atualização de token.
+No entanto, esse token é de vida curta. O token expira uma hora após sua emissão. É onde o `refresh_token` valor se torna útil. O token de atualização permite que o aplicativo solicite um novo token de acesso sem exigir que o usuário entre novamente. Atualize o código de gerenciamento de token para implementar a atualização de token.
 
 Abra `./app/controllers/application_controller.rb` e adicione as seguintes `require` instruções na parte superior:
 
