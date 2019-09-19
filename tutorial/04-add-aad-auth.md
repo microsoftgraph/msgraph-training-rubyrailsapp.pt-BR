@@ -41,7 +41,7 @@ module OmniAuth
 
       DEFAULT_SCOPE = 'openid email profile User.Read'.freeze
 
-      # Configure the Azure v2 endpoints
+      # Configure the Microsoft identity platform endpoints
       option  :client_options,
               site:          'https://login.microsoftonline.com',
               authorize_url: '/common/oauth2/v2.0/authorize',
@@ -86,7 +86,7 @@ end
 
 Reserve um tempo para revisar o que esse código faz.
 
-- Ele define o `client_options` para especificar os pontos de extremidade do Azure v2.
+- Ele define o `client_options` para especificar os pontos de extremidade da plataforma de identidade da Microsoft.
 - Especifica que o `scope` parâmetro deve ser enviado durante a fase de autorização.
 - Ele mapeia a `id` Propriedade do usuário como a ID exclusiva para o usuário.
 - Ele usa o token de acesso para recuperar o perfil do usuário do Microsoft Graph para preencher o `raw_info` hash.
@@ -290,7 +290,7 @@ Reinicie o servidor e vá pelo processo de entrada. Você deve terminar de volta
 
 ![Uma captura de tela da Home Page após entrar](./images/add-aad-auth-01.png)
 
-Clique no avatar do usuário no canto superior direito para acessar o **** link sair. Clicar **** em sair redefine a sessão e retorna à Home Page.
+Clique no avatar do usuário no canto superior direito para **acessar o link sair.** Clicar **em sair** redefine a sessão e retorna à Home Page.
 
 ![Uma captura de tela do menu suspenso com o link sair](./images/add-aad-auth-02.png)
 
