@@ -23,6 +23,7 @@ Abra o navegador e vá até `http://localhost:3000`. Se tudo estiver funcionando
 Antes de prosseguir, instale algumas Gems adicionais que serão usadas posteriormente:
 
 - [omniauth-oauth2](https://github.com/omniauth/omniauth-oauth2) para manipulação de entrada e fluxos de token OAuth.
+- [omniauth-rails_csrf_protection](https://github.com/cookpad/omniauth-rails_csrf_protection) para adicionar proteção do CSRF ao omniauth.
 - [httparty](https://github.com/jnunemaker/httparty) para fazer chamadas para o Microsoft Graph.
 - [nokogiri](https://github.com/sparklemotion/nokogiri) para processar corpos de email HTML.
 - [ActiveRecord-session_store](https://github.com/rails/activerecord-session_store) para armazenar sessões no banco de dados.
@@ -31,6 +32,7 @@ Execute os seguintes comandos em sua CLI.
 
 ```Shell
 bundle add omniauth-oauth2
+bundle add omniauth-rails_csrf_protection
 bundle add httparty
 bundle add nokogiri
 bundle add activerecord-session_store
