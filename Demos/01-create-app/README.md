@@ -1,3 +1,0 @@
-# <a name="completed-module-create-a-ruby-on-rails-web-app"></a>Módulo concluído: criar um aplicativo Web do Ruby on Rails
-
-A versão do projeto neste diretório reflete a conclusão do tutorial para cima, [criar um aplicativo Web do Ruby on Rails](https://docs.microsoft.com/graph/training/ruby-tutorial?tutorial-step=1). Se você usar esta versão do projeto, precisará concluir o restante do tutorial começando em [registrar o aplicativo no portal](https://docs.microsoft.com/graph/training/ruby-tutorial?tutorial-step=2).
