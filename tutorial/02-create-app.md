@@ -5,7 +5,7 @@ Neste exercício, você usará o [Ruby on Rails](https://rubyonrails.org/) para 
 1. Se você ainda não tiver os Rails instalados, você pode instalá-lo a partir da sua CLI (interface de linha de comando) com o seguinte comando.
 
     ```Shell
-    gem install rails -v 6.0.2.2
+    gem install rails -v 6.0.3.4
     ```
 
 1. Abra sua CLI, navegue até um diretório no qual você tem direitos para criar arquivos e execute o seguinte comando para criar um novo aplicativo Rails.
@@ -56,11 +56,11 @@ Antes de prosseguir, instale algumas Gems adicionais que serão usadas posterior
 
 Nesta seção, você criará a interface do usuário básica para o aplicativo.
 
-1. Abra **./app/views/layouts/Application.html.erb** e substitua seu conteúdo pelo seguinte.
+1. Abra **./app/views/layouts/application.html. erb** e substitua seu conteúdo pelo seguinte.
 
     :::code language="html" source="../demo/graph-tutorial/app/views/layouts/application.html.erb" id="LayoutSnippet":::
 
-    Este código adiciona a [inicialização](http://getbootstrap.com/) para estilos simples e a [fonte incrível](https://fontawesome.com/) para alguns ícones simples. Também define um layout global com uma barra de navegação.
+    Este código adiciona [Bootstrap](http://getbootstrap.com/) para estilo simples e [Fabric Core](https://developer.microsoft.com/fluentui#/get-started#fabric-core) para alguns ícones simples. Também define um layout global com uma barra de navegação.
 
 1. Abra **./app/assets/stylesheets/Application.css** e adicione o seguinte ao final do arquivo.
 
@@ -84,9 +84,11 @@ Nesta seção, você criará a interface do usuário básica para o aplicativo.
     end
     ```
 
-1. Abra **./app/view/home/index.html.erb** e substitua seu conteúdo pelo seguinte.
+1. Abra **./app/view/home/index.html. erb** e substitua seu conteúdo pelo seguinte.
 
     :::code language="html" source="../demo/graph-tutorial/app/views/home/index.html.erb" id="HomeSnippet":::
+
+1. Adicione um arquivo PNG chamado **no-profile-photo.png** no diretório **./app/assets/images** .
 
 1. Salve todas as suas alterações e reinicie o servidor. Agora, o aplicativo deve ser muito diferente.
 

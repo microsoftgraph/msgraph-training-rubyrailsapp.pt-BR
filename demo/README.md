@@ -45,14 +45,20 @@ Se você não tem uma conta da Microsoft, há algumas opções para obter uma co
 
 ## <a name="configure-the-sample"></a>Configurar o exemplo
 
-1. Renomear `./config/oauth_environment_variables.rb.example` o `oauth_environment_variables.rb`arquivo para.
-1. Edite `oauth_environment_variables.rb` o arquivo e faça as seguintes alterações.
+1. Renomear o `./config/oauth_environment_variables.rb.example` arquivo para `oauth_environment_variables.rb` .
+1. Edite o `oauth_environment_variables.rb` arquivo e faça as seguintes alterações.
     1. Substitua `YOUR_APP_ID_HERE` pela **ID do aplicativo** obtida do portal de registro do aplicativo.
     1. Substitua `YOUR APP PASSWORD HERE` pela senha obtida do portal de registro do aplicativo.
 1. Na sua interface de linha de comando (CLI), navegue até este diretório e execute o seguinte comando para instalar os requisitos.
 
     ```Shell
     bundle install
+    ```
+
+1. Na sua CLI, execute o seguinte comando para instalar os pacotes do PNPM.
+
+    ```Shell
+    yarn install
     ```
 
 1. Na sua CLI, execute o seguinte comando para inicializar o banco de dados do aplicativo.

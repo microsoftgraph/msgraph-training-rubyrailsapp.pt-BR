@@ -10,7 +10,12 @@ Este tutorial ensina como criar um aplicativo Web do Ruby on Rails que usa a API
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
-Antes de iniciar este tutorial, você deve ter o [Ruby](https://www.ruby-lang.org/en/downloads/) instalado em sua máquina de desenvolvimento. Se você não tiver o Ruby, visite o link anterior para opções de download.
+Antes de iniciar este tutorial, você deve ter as seguintes ferramentas instaladas em sua máquina de desenvolvimento.
+
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
+- [SQLite3](https://sqlite.org/index.html)
+- [Node.js](https://nodejs.org/en/)
+- [PNPM](https://yarnpkg.com/)
 
 Você também deve ter uma conta pessoal da Microsoft com uma caixa de correio no Outlook.com ou uma conta corporativa ou de estudante da Microsoft. Se você não tem uma conta da Microsoft, há algumas opções para obter uma conta gratuita:
 
@@ -18,7 +23,12 @@ Você também deve ter uma conta pessoal da Microsoft com uma caixa de correio n
 - Você pode [se inscrever no programa para desenvolvedores do office 365](https://developer.microsoft.com/office/dev-program) para obter uma assinatura gratuita do Office 365.
 
 > [!NOTE]
-> Este tutorial foi escrito com o Ruby versão 2.6.5. As etapas deste guia podem funcionar com outras versões, mas que não foram testadas.
+> Este tutorial foi escrito com as seguintes versões das ferramentas necessárias. As etapas deste guia podem funcionar com outras versões, mas que não foram testadas.
+>
+> - Versão do Ruby 2.6.6.
+> - SQLite3 versão 3.31.1
+> - Node.js versão 14.15.0
+> - PNPM versão 1.22.0
 
 ## <a name="feedback"></a>Comentários
 

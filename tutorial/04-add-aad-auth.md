@@ -9,9 +9,9 @@ Neste exercício, você estenderá o aplicativo do exercício anterior para ofer
 1. Substitua `YOUR_APP_ID_HERE` pela ID do aplicativo do portal de registro do aplicativo e substitua `YOUR_APP_SECRET_HERE` pela senha gerada.
 
     > [!IMPORTANT]
-    > Se você estiver usando o controle de origem como o Git, agora seria uma boa hora para excluir `oauth_environment_variables.rb` o arquivo do controle de origem para evitar vazar inadvertidamente sua ID de aplicativo e sua senha.
+    > Se você estiver usando o controle de origem como o Git, agora seria uma boa hora para excluir o `oauth_environment_variables.rb` arquivo do controle de origem para evitar vazar inadvertidamente sua ID de aplicativo e sua senha.
 
-1. Abra **./config/Environment.rb** e adicione o código a seguir antes `Rails.application.initialize!` da linha.
+1. Abra **./config/Environment.rb** e adicione o código a seguir antes da `Rails.application.initialize!` linha.
 
     :::code language="ruby" source="../demo/graph-tutorial/config/environment.rb" id="LoadOAuthSettingsSnippet" highlight="4-6":::
 
@@ -47,7 +47,7 @@ Agora que o middleware OmniAuth está configurado, você pode prosseguir para ad
     rails generate controller Auth
     ```
 
-1. Open **./app/controllers/auth_controller. rb**. Adicione um método de retorno de `AuthController` chamada à classe. Este método será chamado pelo middleware OmniAuth depois que o fluxo OAuth estiver concluído.
+1. Open **./app/controllers/auth_controller. rb**. Adicione um método de retorno de chamada à `AuthController` classe. Este método será chamado pelo middleware OmniAuth depois que o fluxo OAuth estiver concluído.
 
     ```ruby
     def callback
@@ -65,10 +65,10 @@ Agora que o middleware OmniAuth está configurado, você pode prosseguir para ad
 
     ```ruby
     # Add route for OmniAuth callback
-    match '/auth/:provider/callback', to: 'auth#callback', via: [:get, :post]
+    match '/auth/:provider/callback', :to => 'auth#callback', :via => [:get, :post]
     ```
 
-1. Inicie o servidor e navegue até `https://localhost:3000`. Clique no botão entrar e você deverá ser redirecionado para `https://login.microsoftonline.com`o. Faça logon com sua conta da Microsoft e concorde com as permissões solicitadas. O navegador redireciona para o aplicativo, mostrando o hash gerado pelo OmniAuth.
+1. Inicie o servidor e navegue até `https://localhost:3000` . Clique no botão entrar e você deverá ser redirecionado para o `https://login.microsoftonline.com` . Faça logon com sua conta da Microsoft e concorde com as permissões solicitadas. O navegador redireciona para o aplicativo, mostrando o hash gerado pelo OmniAuth.
 
     ```json
     {
@@ -85,20 +85,50 @@ Agora que o middleware OmniAuth está configurado, você pode prosseguir para ad
       },
       "extra": {
         "raw_info": {
-          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
-          "id": "eb52b3b2-c4ac-4b4f-bacd-d5f7ece55df0",
-          "businessPhones": [
-            "+1 425 555 0109"
-          ],
-          "displayName": "Adele Vance",
-          "givenName": "Adele",
-          "jobTitle": "Retail Manager",
-          "mail": "AdeleV@contoso.onmicrosoft.com",
-          "mobilePhone": null,
-          "officeLocation": "18/2111",
-          "preferredLanguage": "en-US",
-          "surname": "Vance",
-          "userPrincipalName": "AdeleV@contoso.onmicrosoft.com"
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users(displayName,mail,mailboxSettings,userPrincipalName)/$entity",
+          "displayName": "Lynne Robbins",
+          "mail": "LynneR@contoso.OnMicrosoft.com",
+          "userPrincipalName": "LynneR@contoso.OnMicrosoft.com",
+          "id": "d294e784-840e-4f9f-bb1e-95c0a75f2f18@2d18179c-4386-4cbd-8891-7fd867c4f62e",
+          "mailboxSettings": {
+            "archiveFolder": "AAMkAGI2...",
+            "timeZone": "Pacific Standard Time",
+            "delegateMeetingMessageDeliveryOptions": "sendToDelegateOnly",
+            "dateFormat": "M/d/yyyy",
+            "timeFormat": "h:mm tt",
+            "automaticRepliesSetting": {
+              "status": "disabled",
+              "externalAudience": "all",
+              "internalReplyMessage": "",
+              "externalReplyMessage": "",
+              "scheduledStartDateTime": {
+                "dateTime": "2020-12-09T17:00:00.0000000",
+                "timeZone": "UTC"
+              },
+              "scheduledEndDateTime": {
+                "dateTime": "2020-12-10T17:00:00.0000000",
+                "timeZone": "UTC"
+              }
+            },
+            "language": {
+              "locale": "en-US",
+              "displayName": "English (United States)"
+            },
+            "workingHours": {
+              "daysOfWeek": [
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday"
+              ],
+              "startTime": "08:00:00.0000000",
+              "endTime": "17:00:00.0000000",
+              "timeZone": {
+                "name": "Pacific Standard Time"
+              }
+            }
+          }
         }
       }
     }
@@ -125,6 +155,10 @@ Agora que você pode obter tokens, é hora de implementar uma maneira de armazen
       session[:user_email]
     end
 
+    def user_timezone
+      session[:user_timezone]
+    end
+
     def access_token
       session[:graph_token_hash][:token]
     end
@@ -134,7 +168,7 @@ Agora que você pode obter tokens, é hora de implementar uma maneira de armazen
 
     :::code language="ruby" source="../demo/graph-tutorial/app/controllers/application_controller.rb" id="BeforeActionSnippet":::
 
-    Este método define as variáveis que o layout (em **Application. html. erb**) usa para mostrar as informações do usuário na barra de navegação. Adicionando-o aqui, não é necessário adicionar esse código em cada ação de controlador único. No entanto, isso também será executado para ações `AuthController`no, o que não é ideal.
+    Este método define as variáveis que o layout (em **application.html. erb**) usa para mostrar as informações do usuário na barra de navegação. Adicionando-o aqui, não é necessário adicionar esse código em cada ação de controlador único. No entanto, isso também será executado para ações no `AuthController` , o que não é ideal.
 
 1. Adicione o código a seguir à `AuthController` classe em **./app/Controllers/auth_controller. rb** para ignorar a ação anterior.
 
@@ -170,7 +204,7 @@ Antes de testar esse novo recurso, adicione uma maneira de sair.
 
 ## <a name="refreshing-tokens"></a>Atualizando tokens
 
-Se você observar atentamente o hash gerado pelo OmniAuth, observará que há dois tokens no hash: `token` e. `refresh_token` O valor em `token` é o token de acesso, que é enviado no `Authorization` cabeçalho das chamadas de API. Este é o token que permite que o aplicativo acesse o Microsoft Graph em nome do usuário.
+Se você observar atentamente o hash gerado pelo OmniAuth, observará que há dois tokens no hash: `token` e `refresh_token` . O valor em `token` é o token de acesso, que é enviado no `Authorization` cabeçalho das chamadas de API. Este é o token que permite que o aplicativo acesse o Microsoft Graph em nome do usuário.
 
 No entanto, esse token é de vida curta. O token expira uma hora após sua emissão. É onde o `refresh_token` valor se torna útil. O token de atualização permite que o aplicativo solicite um novo token de acesso sem exigir que o usuário entre novamente. Atualize o código de gerenciamento de token para implementar a atualização de token.
 
@@ -187,7 +221,7 @@ No entanto, esse token é de vida curta. O token expira uma hora após sua emiss
 
     Esse método usa o gem [oauth2](https://github.com/oauth-xx/oauth2) (uma dependência do `omniauth-oauth2` gem) para atualizar os tokens e atualiza a sessão.
 
-1. Substitua o método `access_token` atual pelo seguinte.
+1. Substitua o `access_token` método atual pelo seguinte.
 
     :::code language="ruby" source="../demo/graph-tutorial/app/controllers/application_controller.rb" id="AccessTokenSnippet":::
 
